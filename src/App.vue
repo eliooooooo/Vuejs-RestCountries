@@ -1,6 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import BouclesTests from './components/Boucles-test.vue'
 </script>
 
 <template>
@@ -13,7 +12,7 @@ import TheWelcome from './components/TheWelcome.vue'
   </header>
 
   <main>
-    <TheWelcome />
+    <BouclesTests></BouclesTests>
   </main>
 </template>
 
