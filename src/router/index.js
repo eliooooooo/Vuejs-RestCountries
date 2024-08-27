@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Home from '../components/Home.vue'
 import BouclesTestExo from '../components/Boucles-test-exo.vue'
+import BouclesTest from '../components/Boucles-test.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
