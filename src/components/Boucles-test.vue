@@ -7,6 +7,8 @@
         <li v-else>Changer le mode d'affichage</li>
         </ul>
 
+        <p v-show="show" >l'affichage est activé</p>
+
         <button @click="show = !show">Changer l'affichage</button>
     </div>
 </template>
@@ -32,5 +34,9 @@ export default {
   button {
     margin-top: 20px;
     cursor: pointer;
+  }
+
+  p{
+    margin-top: 30px;
   }
 </style>
