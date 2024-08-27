@@ -1,14 +1,25 @@
-<script setup>
-</script>
-
 <template>
   <main>
     <router-link to="/">Home</router-link>
+    <!-- Route nommée -->
+    <router-link :to="{name: 'test'}">About</router-link>
+    <!-- Url avec variable -->
+    <router-link :to="`/count/${number}`">Counter (10)</router-link>
     <router-link to="/boucles">Boucles</router-link>
     <router-link to="/boucles-exos">Boucles exos</router-link>
     <router-view></router-view>
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      number: 10
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {
