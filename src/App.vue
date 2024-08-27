@@ -1,5 +1,5 @@
 <script setup>
-import BouclesTests from './components/Boucles-test.vue'
+import BouclesTestsExo from './components/Boucles-test-exo.vue'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import BouclesTests from './components/Boucles-test.vue'
   </header>
 
   <main>
-    <BouclesTests></BouclesTests>
+    <BouclesTestsExo></BouclesTestsExo>
   </main>
 </template>
 
