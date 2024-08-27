@@ -1,5 +1,6 @@
 <script setup>
 import BouclesTestsExo from './components/Boucles-test-exo.vue'
+import BouclesTestsExo from './components/Boucles-test.vue'
 </script>
 
 <template>
@@ -13,6 +14,10 @@ import BouclesTestsExo from './components/Boucles-test-exo.vue'
 
   <main>
     <BouclesTestsExo></BouclesTestsExo>
+    <router-link to="/">Home</router-link>
+    <router-link to="/boucles">Boucles</router-link>
+    <router-link to="/boucles-exos">Boucles exos</router-link>
+    <router-view></router-view>
   </main>
 </template>
 
