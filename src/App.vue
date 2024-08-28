@@ -1,12 +1,15 @@
 <template>
   <main>
-    <router-link to="/">Home</router-link>
-    <!-- Route nommée -->
-    <router-link :to="{name: 'test'}">About</router-link>
-    <!-- Url avec variable -->
-    <router-link :to="`/count/${number}`">Counter (10)</router-link>
-    <router-link to="/boucles">Boucles</router-link>
-    <router-link to="/boucles-exos">Boucles exos</router-link>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <!-- Route nommée -->
+      <router-link :to="{name: 'test'}">About</router-link>
+      <!-- Url avec variable -->
+      <router-link :to="`/count/${number}`">Counter (10)</router-link>
+      <router-link to="/boucles">Boucles</router-link>
+      <router-link to="/boucles-exos">Boucles exos</router-link>
+      <router-link to="/capitals">Capitals</router-link>
+    </nav>
     <router-view></router-view>
   </main>
 </template>
