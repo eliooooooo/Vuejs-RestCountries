@@ -8,7 +8,7 @@
       <router-link :to="`/count/${number}`">Counter (10)</router-link>
       <router-link to="/boucles">Boucles</router-link>
       <router-link to="/boucles-exos">Boucles exos</router-link>
-      <router-link to="/capitals">Capitals</router-link>
+      <router-link to="/pays">Pays</router-link>
     </nav>
     <router-view></router-view>
   </main>

@@ -1,12 +1,26 @@
 <script setup>
 defineProps({
-    pays: String,
-    capitale: String
+    data: Object
 })
 </script>
 
 <template>
     <div>
-        <h1>{{ capitale }} est la capitale de {{ pays }}</h1>
+        <img :src="data.flags.svg"/>
+        <h1>{{ data.name.common }}</h1>
     </div>    
 </template>
+
+<style scoped>
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    width: 200px;
+}
+</style>
