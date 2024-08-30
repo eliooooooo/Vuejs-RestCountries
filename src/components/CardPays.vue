@@ -5,10 +5,10 @@ defineProps({
 </script>
 
 <template>
-    <div>
+    <a :href="data.name.common">
         <img :src="data.flags.svg"/>
         <h1>{{ data.name.common }}</h1>
-    </div>    
+    </a>    
 </template>
 
 <style scoped>
@@ -18,6 +18,7 @@ div {
     gap: 20px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 60px;
 }
 
 img{

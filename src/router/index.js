@@ -32,8 +32,13 @@ const router = createRouter({
     {
       path: '/count/:number',
       component: Count
-    },{
+    },
+    {
       path: '/pays',
+      component: Pays
+    },
+    {
+      path: '/pays/:pays',
       component: Pays
     }
   ]
