@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-    <a :href="data.name.common">
+    <a :href="`/pays/${data.name.common}`">
         <img :src="data.flags.svg"/>
         <h1>{{ data.name.common }}</h1>
     </a>    
