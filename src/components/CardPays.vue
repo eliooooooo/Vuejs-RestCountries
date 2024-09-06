@@ -1,12 +1,21 @@
 <script setup>
-defineProps({
+import { watch, ref } from 'vue';
+
+const props = defineProps({
+    image: Boolean,
     data: Object
 })
+
+const image = ref(props.image)
+
+watch(() => props.image, (newValue, oldValue) => {
+    image.value = newValue;
+});
 </script>
 
 <template>
     <a :href="`/pays/${data.name.common}`">
-        <img :src="data.flags.svg"/>
+        <img v-if="image":src="data.flags.svg"/>
         <h1>{{ data.name.common }}</h1>
     </a>    
 </template>

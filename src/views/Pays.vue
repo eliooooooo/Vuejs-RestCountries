@@ -11,6 +11,7 @@ let pays = ref(route.params.pays);
 
 let data = ref('');
 let recherche = ref('');
+let image = ref(true);
 
 const fetchData = async () => {
     if (pays.value) {
@@ -58,9 +59,11 @@ const filtrer = async (recherche) => {
 </script>
 
 <template>
+    <label>Afficher les drapeaux</label>
+    <input type="checkbox" v-model="image">
     <input v-model="recherche" placeholder="Rechercher un pays" @input="filtrer(recherche)">
     <div v-if="all" v-for="pays in data" :pays="pays">
-        <CardPays :data="pays"/>
+        <CardPays :data="pays" :image="image"/>
     </div>
     <div v-else>
         <ViewPays :data="data[0]"/>
