@@ -10,6 +10,7 @@ const route = useRoute();
 let pays = ref(route.params.pays);
 
 let data = ref('');
+let recherche = ref('');
 
 const fetchData = async () => {
     if (pays.value) {
@@ -35,9 +36,29 @@ watch(() => route.params.pays, (newPays) => {
     pays.value = newPays;
     fetchData();
 });
+
+const filtrer = async (recherche) => {
+    if(recherche.length > 0) {
+        data.value = await fetch('https://restcountries.com/v3.1/all')
+            .then(response => response.json())
+            .then(data => {
+                let tmp = [];
+                data.forEach(element => {
+                    if(element.name.common.toLowerCase().startsWith(recherche.toLowerCase())) {
+                        tmp.push(element);
+                    }
+                });
+                return tmp;
+        })
+    } else {
+        fetchData();
+    }
+}
 </script>
 
 <template>
+    <input v-model="recherche" placeholder="Rechercher un pays" @keydown.enter="filtrer(recherche)">
+    <button @click="filtrer(recherche)">Rechercher</button>
     <div v-if="all" v-for="pays in data" :pays="pays">
         <CardPays :data="pays"/>
     </div>
