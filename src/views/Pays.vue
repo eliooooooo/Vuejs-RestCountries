@@ -12,6 +12,7 @@ let pays = ref(route.params.pays);
 let data = ref('');
 let recherche = ref('');
 let image = ref(true);
+let nbChecked = ref(0);
 
 const fetchData = async () => {
     if (pays.value) {
@@ -38,6 +39,7 @@ watch(() => route.params.pays, (newPays) => {
     fetchData();
 });
 
+
 const filtrer = async (recherche) => {
     if(recherche.length > 0) {
         all = true;
@@ -56,16 +58,42 @@ const filtrer = async (recherche) => {
         fetchData();
     }
 }
+
+const updateChecked = (checked) => {
+    if(checked) {
+        nbChecked.value++
+    } else {
+        nbChecked.value--
+    }
+}
 </script>
 
 <template>
-    <label>Afficher les drapeaux</label>
-    <input type="checkbox" v-model="image">
-    <input v-model="recherche" placeholder="Rechercher un pays" @input="filtrer(recherche)">
+    <div>
+        <p><span>{{ nbChecked }}</span> pays sélectionnés</p>
+        <div class="row">
+            <label>Afficher les drapeaux</label>
+            <input type="checkbox" v-model="image">
+        </div>
+        <input v-model="recherche" placeholder="Rechercher un pays" @input="filtrer(recherche)">
+    </div>
+
     <div v-if="all" v-for="pays in data" :pays="pays">
-        <CardPays :data="pays" :image="image"/>
+        <CardPays @checkedEvent="updateChecked" :data="pays" :image="image"/>
     </div>
     <div v-else>
         <ViewPays :data="data[0]"/>
     </div>
 </template>
+
+<style scoped>
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .row {
+        flex-direction: row;
+    }
+</style>
