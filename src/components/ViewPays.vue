@@ -16,7 +16,7 @@ defineProps({
             <p>Time zone : {{ String(data.timezones) }}</p>
             <p class="light">Population : {{ data.population }}</p>
 
-            <a href="{{ data.maps.googleMaps }}">Go to {{ data.name.common }} !</a>
+            <a :href="data.maps.googleMaps">Go to {{ data.name.common }} !</a>
         </div>
     </div>
 </template>
