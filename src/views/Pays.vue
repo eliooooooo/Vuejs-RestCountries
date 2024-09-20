@@ -228,6 +228,7 @@ input[type="checkbox"]:checked+.checkmark::after {
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: rgba(255, 255, 255, 0.13);
+    color: white;
 }
 
 .bg-style {
