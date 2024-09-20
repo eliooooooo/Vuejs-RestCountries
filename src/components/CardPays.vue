@@ -15,13 +15,13 @@ watch(() => props.image, (newValue, oldValue) => {
 </script>
 
 <template>
-    <a :href="`/pays/${data.name.common}`">
+    <router-link :to="`/pays/${data.name.common}`">
         <img v-if="image":src="data.flags.svg"/>
         <div class="row">
             <!-- <input type="checkbox" v-model="checked" @change="$emit('checkedEvent', checked)"> -->
             <h1>{{ data.name.common }}</h1> 
         </div>
-    </a>    
+    </router-link>    
 </template>
 
 <style scoped>
