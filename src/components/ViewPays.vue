@@ -13,7 +13,10 @@ defineProps({
             <p>Region : {{ data.region }}</p>
             <p>Sub-region : {{ data.subregion }}</p>
             <p>Area : {{ data.area }}</p>
+            <p>Time zone : {{ String(data.timezones) }}</p>
             <p class="light">Population : {{ data.population }}</p>
+
+            <a href="{{ data.maps.googleMaps }}">Go to {{ data.name.common }} !</a>
         </div>
     </div>
 </template>

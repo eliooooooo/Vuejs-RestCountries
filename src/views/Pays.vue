@@ -69,17 +69,17 @@ const updateChecked = (checked) => {
 </script>
 
 <template>
-    <div>
-        <p><span>{{ nbChecked }}</span> pays sélectionnés</p>
-        <div class="row">
+    <div class="bg-style">
+        <!-- <p><span>{{ nbChecked }}</span> pays sélectionnés</p> -->
+        <input class="search" v-model="recherche" placeholder="Rechercher un pays" @input="filtrer(recherche)">
+        <div v-if="all" class="row">
             <label>Afficher les drapeaux</label>
             <input type="checkbox" v-model="image">
         </div>
-        <input v-model="recherche" placeholder="Rechercher un pays" @input="filtrer(recherche)">
     </div>
 
-    <div v-if="all" v-for="pays in data" :pays="pays">
-        <CardPays @checkedEvent="updateChecked" :data="pays" :image="image"/>
+    <div v-if="all" class="container-cards">
+        <CardPays class="cardpays" v-for="pays in data" @checkedEvent="updateChecked" :data="pays" :image="image"/>
     </div>
     <div v-else>
         <ViewPays :data="data[0]"/>
@@ -95,5 +95,36 @@ const updateChecked = (checked) => {
 
     .row {
         flex-direction: row;
+    }
+
+    .container-cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .cardpays {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: flex-start;
+        width: 300px;
+    }
+
+    .search {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: rgba(255, 255, 255, 0.13);
+    }
+
+    .bg-style {
+        background-color: rgba(255, 255, 255, 0.13);
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
     }
 </style>

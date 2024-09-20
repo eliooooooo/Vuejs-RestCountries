@@ -18,7 +18,7 @@ watch(() => props.image, (newValue, oldValue) => {
     <a :href="`/pays/${data.name.common}`">
         <img v-if="image":src="data.flags.svg"/>
         <div class="row">
-            <input type="checkbox" v-model="checked" @change="$emit('checkedEvent', checked)">
+            <!-- <input type="checkbox" v-model="checked" @change="$emit('checkedEvent', checked)"> -->
             <h1>{{ data.name.common }}</h1> 
         </div>
     </a>    
@@ -31,7 +31,6 @@ div {
     gap: 20px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 60px;
 }
 
 .row {
@@ -44,5 +43,10 @@ div {
 
 img{
     width: 200px;
+    max-height: 120px;
+}
+
+h1 {
+    text-align: center;
 }
 </style>
