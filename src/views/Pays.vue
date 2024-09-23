@@ -13,8 +13,10 @@ let data = ref('');
 let recherche = ref('');
 let image = ref(true);
 let nbChecked = ref(0);
+let loading = ref(false); // Ajout de la variable loading
 
 const fetchData = async () => {
+    loading.value = true; // Début du chargement
     if (pays.value) {
         all = false;
         data.value = await fetch(`https://restcountries.com/v3.1/name/${pays.value}`)
@@ -30,6 +32,7 @@ const fetchData = async () => {
                 return data
             })
     }
+    loading.value = false; // Fin du chargement
 };
 
 onMounted(fetchData);
@@ -39,8 +42,8 @@ watch(() => route.params.pays, (newPays) => {
     fetchData();
 });
 
-
 const filtrer = async (recherche) => {
+    loading.value = true; // Début du chargement
     if (recherche.length > 0) {
         all = true;
         data.value = await fetch('https://restcountries.com/v3.1/all')
@@ -57,6 +60,7 @@ const filtrer = async (recherche) => {
     } else {
         fetchData();
     }
+    loading.value = false; // Fin du chargement
 }
 
 const updateChecked = (checked) => {
@@ -107,16 +111,21 @@ const updateChecked = (checked) => {
         </div>
     </div>
 
-    <div v-if="data.length > 0">
-        <div v-if="all" class="container-cards container">
-            <CardPays class="cardpays" v-for="pays in data" :data="pays" :image="image" />
-        </div>
-        <div v-else class="container container-card">
-            <ViewPays :data="data[0]" />
-        </div>
+    <div v-if="loading" class="container container-card center">
+        <p>Chargement...</p>
     </div>
-    <div v-else class="container container-card center">
-        <p>Aucun pays trouvé...</p>
+    <div v-else>
+        <div v-if="data.length > 0">
+            <div v-if="all" class="container-cards container">
+                <CardPays class="cardpays" v-for="pays in data" :data="pays" :image="image" />
+            </div>
+            <div v-else class="container container-card">
+                <ViewPays :data="data[0]" />
+            </div>
+        </div>
+        <div v-else class="container container-card center">
+            <p>Aucun pays trouvé...</p>
+        </div>
     </div>
 </template>
 
