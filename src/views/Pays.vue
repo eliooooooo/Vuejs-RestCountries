@@ -107,17 +107,26 @@ const updateChecked = (checked) => {
         </div>
     </div>
 
-    <div v-if="all" class="container-cards container">
-        <CardPays class="cardpays" v-for="pays in data" @checkedEvent="updateChecked" :data="pays" :image="image" />
+    <div v-if="data.length > 0">
+        <div v-if="all" class="container-cards container">
+            <CardPays class="cardpays" v-for="pays in data" :data="pays" :image="image" />
+        </div>
+        <div v-else class="container container-card">
+            <ViewPays :data="data[0]" />
+        </div>
     </div>
-    <div v-else class="container container-card">
-        <ViewPays :data="data[0]" />
+    <div v-else class="container container-card center">
+        <p>Aucun pays trouvé...</p>
     </div>
 </template>
 
 <style scoped>
 input[type="checkbox"] {
     display: none;
+}
+
+.center  {
+    text-align: center;
 }
 
 .checkmark {
